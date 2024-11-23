@@ -5,7 +5,7 @@ public class BeeController : MonoBehaviour
     public float maxSpeed = 20.0f; // Maximum velocity
     public float startSpeed = 4.0f;
     public float pauseDuration = 1.0f; // Time to stay at a flower
-    public float arcHeightFactor = 1.5f; // Height factor of the arc trajectory
+    public float arcHeightFactor = 10f; // Height factor of the arc trajectory 1.5
 
     private Transform targetFlower;
     public Transform flowersParent;
@@ -79,6 +79,14 @@ public class BeeController : MonoBehaviour
     {
         isPaused = true;
         pauseTimer = pauseDuration;
+
+        // Get the flower's box collider transform
+        Transform boxTransform = targetFlower.GetComponent<BoxCollider>().transform;
+
+        // Align the bee's rotation to be parallel to the box collider
+        Quaternion targetRotation = Quaternion.LookRotation(boxTransform.forward, boxTransform.up);
+        transform.rotation = targetRotation;
+
     }
 
     void PickNewFlower()
@@ -86,7 +94,7 @@ public class BeeController : MonoBehaviour
         Transform currentFlower = targetFlower;
         while (currentFlower == targetFlower)
         {
-            targetFlower = flowersParent.GetChild(Random.Range(0, flowersParent.childCount));
+            targetFlower = flowersParent.GetChild(Random.Range(0, flowersParent.childCount)).Find("PolenArea").transform;
         }
     }
 
