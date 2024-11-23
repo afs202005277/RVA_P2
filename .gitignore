@@ -1,4 +1,5 @@
 BaseDefense_BurstDebugInformation_DoNotShip/
+Assets/Bee/take_off_and_land.anim
 *.tgz
 
 # Created by https://www.toptal.com/developers/gitignore/api/unity,windows,linux
