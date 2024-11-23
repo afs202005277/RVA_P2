@@ -1,3 +1,4 @@
+using GLTFast.Schema;
 using UnityEngine;
 
 public class BeeController : MonoBehaviour
@@ -8,15 +9,18 @@ public class BeeController : MonoBehaviour
     public float arcHeightFactor = 10f; // Height factor of the arc trajectory 1.5
 
     private Transform targetFlower;
+    private Transform currentFlower = null;
     public Transform flowersParent;
     private Vector3[] controlPoints;
     private float t; // Normalized time for the path
     private float currentSpeed;
     private bool isPaused;
     private float pauseTimer;
-
+    private Quaternion rotationOnFlower;
+    private Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         PickNewFlower();
         GenerateControlPoints();
         t = 0;
@@ -27,12 +31,15 @@ public class BeeController : MonoBehaviour
     {
         if (isPaused)
         {
-            pauseTimer -= Time.deltaTime;
-            if (pauseTimer <= 0)
+            pauseTimer += Time.deltaTime;
+            // Smoothly rotate the bee
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotationOnFlower, pauseTimer/pauseDuration);
+            
+            if (pauseTimer >= pauseDuration)
             {
                 isPaused = false;
-                PickNewFlower();
                 GenerateControlPoints();
+                animator.SetBool("isIdle", false);
                 t = 0;
             }
             return;
@@ -71,22 +78,32 @@ public class BeeController : MonoBehaviour
         {
             currentSpeed = Mathf.Lerp(maxSpeed, 0, (t - 0.8f) / 0.2f);
         }
-
-        Debug.Log($"Current speed: {currentSpeed}");
     }
 
     void OnFlowerArrival()
     {
         isPaused = true;
-        pauseTimer = pauseDuration;
+        pauseTimer = 0;
 
-        // Get the flower's box collider transform
-        Transform boxTransform = targetFlower.GetComponent<BoxCollider>().transform;
+        currentFlower = targetFlower;
+        PickNewFlower();
 
-        // Align the bee's rotation to be parallel to the box collider
-        Quaternion targetRotation = Quaternion.LookRotation(boxTransform.forward, boxTransform.up);
-        transform.rotation = targetRotation;
+        // Get the box collider of the current flower
+        Transform boxTransform = currentFlower.GetComponent<BoxCollider>().transform;
 
+        // Determine the position of the next flower
+        Vector3 nextFlowerPosition = targetFlower.position;
+
+        // Calculate direction to the next flower
+        Vector3 forwardDirection = (nextFlowerPosition - transform.position).normalized;
+
+        // Ensure the forward direction is perpendicular to the box collider's up vector
+        forwardDirection = Vector3.ProjectOnPlane(forwardDirection, boxTransform.up).normalized;
+
+        // Calculate the target rotation
+        rotationOnFlower = Quaternion.LookRotation(forwardDirection, boxTransform.up);
+
+        animator.SetBool("isIdle", true);
     }
 
     void PickNewFlower()

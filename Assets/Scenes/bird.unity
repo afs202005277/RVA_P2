@@ -632,6 +632,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8914207829204841315, guid: e95809a5b7b290f4785bcf4a94a25994, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 776aa442407c7cd4daea33b5790b74f3, type: 2}
+    - target: {fileID: 8914207829204841315, guid: e95809a5b7b290f4785bcf4a94a25994, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -662,7 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 20
   startSpeed: 4
-  pauseDuration: 1
+  pauseDuration: 7
   arcHeightFactor: 1.5
   flowersParent: {fileID: 469530813}
 --- !u!54 &1954682766
