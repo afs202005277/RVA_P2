@@ -11,13 +11,9 @@ public class BirdSpawnVolume : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
     }
 
-    private void Start()
-    {
-        bounds = boxCollider.bounds;
-    }
-
     public Vector3 GetRandomPosition()
     {
+        bounds = boxCollider.bounds;
         // Randomize position within the collider's world-space bounds
         float randomX = Random.Range(bounds.min.x, bounds.max.x);
         float randomY = Random.Range(bounds.min.y, bounds.max.y);
@@ -26,7 +22,7 @@ public class BirdSpawnVolume : MonoBehaviour
         return new Vector3(randomX, randomY, randomZ);
     }
 
-/*#if UNITY_EDITOR
+#if UNITY_EDITOR
     // Draw the spawn area in the Scene view
     private void OnDrawGizmos()
     {
@@ -38,5 +34,5 @@ public class BirdSpawnVolume : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
     }
-#endif*/
+#endif
 }

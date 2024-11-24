@@ -141,7 +141,7 @@ MonoBehaviour:
   moveSpeedMinMax: {x: 10, y: 20}
   changeAnimEveryFromTo: {x: 2, y: 4}
   changeTargetEveryFromTo: {x: 0.5, y: 1}
-  radiusMinMax: {x: 15, y: 30}
+  radiusMinMax: {x: 10, y: 20}
   yMinMax: {x: 20, y: 30}
   returnToBase: 0
   randomBaseOffset: 5

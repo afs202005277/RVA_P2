@@ -45,8 +45,8 @@ public class RandomFlyer : MonoBehaviour
             return;
         }
         // Calculate distances
-        distanceFromBase = Vector3.Magnitude(randomizedBase - body.position);
-        distanceFromTarget = Vector3.Magnitude(flyingTarget - body.position);
+        distanceFromBase = Vector3.Magnitude(randomizedBase - body.transform.position);
+        distanceFromTarget = Vector3.Magnitude(flyingTarget - body.transform.position);
         // Allow drastic turns close to base to ensure target can be reached
         if (returnToBase && distanceFromBase < 10f)
         {
@@ -96,7 +96,8 @@ public class RandomFlyer : MonoBehaviour
         timeSinceAnim += Time.fixedDeltaTime;
 
         // Rotate towards target
-        if (rotateTarget != Vector3.zero) lookRotation = Quaternion.LookRotation(rotateTarget, Vector3.up);
+        if (rotateTarget != Vector3.zero)
+            lookRotation = Quaternion.LookRotation(rotateTarget, Vector3.up);
         Vector3 rotation = Quaternion.RotateTowards(body.transform.rotation, lookRotation, turnSpeed * Time.fixedDeltaTime).eulerAngles;
         body.transform.eulerAngles = rotation;
         // Rotate on z-axis to tilt body towards turn direction
@@ -150,16 +151,20 @@ public class RandomFlyer : MonoBehaviour
             randomizedBase.y += Random.Range(-randomBaseOffset, randomBaseOffset);
             newDir = randomizedBase - currentPosition;
         }
-        else if (distanceFromTarget > radiusMinMax.y)
+        else if (distanceFromTarget > radiusMinMax.y) // very far from target (distance greater than max dist) => fly directly to target
         {
+            Debug.Log($"{gameObject.name}: moving directly to target. Distance: {distanceFromTarget}.");
+            Debug.Log($"Current Pos: {currentPosition}, Target: {flyingTarget}\n");
             newDir = flyingTarget - currentPosition;
         }
-        else if (distanceFromTarget < radiusMinMax.x)
+        else if (distanceFromTarget < radiusMinMax.x)  // very close to target (distance less than min dist) => fly directly away from target
         {
+            Debug.Log($"{gameObject.name}: moving directly away from target. Distance: {distanceFromTarget}.");
             newDir = currentPosition - flyingTarget;
         }
-        else
+        else // between max and min distances from target => play around
         {
+            Debug.Log($"{gameObject.name}: ideal distance. playing around");
             // 360-degree freedom of choice on the horizontal plane
             float angleXZ = Random.Range(-Mathf.PI, Mathf.PI);
             // Limited max steepness of ascent/descent in the vertical direction

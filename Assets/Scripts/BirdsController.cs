@@ -16,6 +16,7 @@ public class BirdsController : MonoBehaviour
         for (int i = 0; i < numBirds; i++)
         {
             GameObject instantiatedBird = Instantiate(availableBirds[Random.Range(0, availableBirds.Length)], birdSpawnVolume.GetRandomPosition(), Quaternion.identity);
+            instantiatedBird.name = instantiatedBird.name + $"_{i}";
             instantiatedBird.transform.SetParent(birdsAggregator, true);
             RandomFlyer script = instantiatedBird.GetComponent<RandomFlyer>();
             script.homeTarget = homes[Random.Range(0, homes.Count)].transform;
