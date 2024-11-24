@@ -111,21 +111,22 @@ public class BeeController : MonoBehaviour
         Transform currentFlower = targetFlower;
         while (currentFlower == targetFlower)
         {
-            targetFlower = flowersParent.GetChild(Random.Range(0, flowersParent.childCount)).Find("PolenArea").transform;
+            targetFlower = flowersParent.GetChild(Random.Range(0, flowersParent.childCount)).transform;
         }
     }
 
     void GenerateControlPoints()
     {
+        Vector3 target = targetFlower.GetComponent<BoxCollider>().bounds.center;
         controlPoints = new Vector3[3];
         controlPoints[0] = transform.position;
 
         // The middle point is higher to create an arc
-        Vector3 midPoint = (transform.position + targetFlower.position) / 2;
+        Vector3 midPoint = (transform.position + target) / 2;
         midPoint.y *= arcHeightFactor;
         controlPoints[1] = midPoint;
 
-        controlPoints[2] = targetFlower.position;
+        controlPoints[2] = target;
     }
 
     Vector3 BezierCurve(Vector3[] points, float t)
