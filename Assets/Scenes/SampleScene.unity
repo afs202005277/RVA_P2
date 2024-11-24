@@ -374,7 +374,7 @@ MonoBehaviour:
   homesAggregator: {fileID: 91808881}
   birdsAggregator: {fileID: 1669308292}
   birdSpawnVolume: {fileID: 2102224645}
-  numBirds: 15
+  numBirds: 5
 --- !u!1 &210754353
 GameObject:
   m_ObjectHideFlags: 0

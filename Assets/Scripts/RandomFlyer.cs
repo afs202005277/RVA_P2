@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RandomFlyer : MonoBehaviour
 {
-    [SerializeField] float idleSpeed, turnSpeed, switchSeconds, idleRatio=0f;
+    [SerializeField] float idleSpeed, turnSpeed, switchSeconds, idleRatio = 0f;
     [SerializeField] Vector2 animSpeedMinMax, moveSpeedMinMax, changeAnimEveryFromTo, changeTargetEveryFromTo;
     [SerializeField] Vector2 radiusMinMax;
     [SerializeField] Vector2 yMinMax;
@@ -19,8 +19,7 @@ public class RandomFlyer : MonoBehaviour
     [System.NonSerialized]
     public float changeTarget = 0f, changeAnim = 0f, timeSinceTarget = 0f, timeSinceAnim = 0f, prevAnim, currentAnim = 0f, prevSpeed, speed, zturn, prevz,
         turnSpeedBackup;
-    public Transform homeTarget;
-    public Vector3 flyingTarget;
+    public Transform homeTarget, flyingTarget;
     private Vector3 rotateTarget, position, direction, velocity, randomizedBase;
     private Quaternion lookRotation;
     [System.NonSerialized] public float distanceFromBase, distanceFromTarget;
@@ -46,7 +45,7 @@ public class RandomFlyer : MonoBehaviour
         }
         // Calculate distances
         distanceFromBase = Vector3.Magnitude(randomizedBase - body.transform.position);
-        distanceFromTarget = Vector3.Magnitude(flyingTarget - body.transform.position);
+        distanceFromTarget = Vector3.Magnitude(flyingTarget.position - body.transform.position);
         // Allow drastic turns close to base to ensure target can be reached
         if (returnToBase && distanceFromBase < 10f)
         {
@@ -80,14 +79,13 @@ public class RandomFlyer : MonoBehaviour
             if (returnToBase) changeTarget = 0.2f; else changeTarget = Random.Range(changeTargetEveryFromTo.x, changeTargetEveryFromTo.y);
             timeSinceTarget = 0f;
         }
+
         // Turn when approaching height limits
-        // ToDo: Adjust limit and "exit direction" by object's direction and velocity, instead of the 10f and 1f - this works in my current scenario/scale
         if (body.transform.position.y < yMinMax.x + 10f ||
             body.transform.position.y > yMinMax.y - 10f)
         {
             if (body.transform.position.y < yMinMax.x + 10f) rotateTarget.y = 1f; else rotateTarget.y = -1f;
         }
-        //body.transform.Rotate(0f, 0f, -prevz, Space.Self); // If required to make Quaternion.LookRotation work correctly, but it seems to be fine
         zturn = Mathf.Clamp(Vector3.SignedAngle(rotateTarget, direction, Vector3.up), -45f, 45f);
         // Update times
         changeAnim -= Time.fixedDeltaTime;
@@ -154,13 +152,13 @@ public class RandomFlyer : MonoBehaviour
         else if (distanceFromTarget > radiusMinMax.y) // very far from target (distance greater than max dist) => fly directly to target
         {
             Debug.Log($"{gameObject.name}: moving directly to target. Distance: {distanceFromTarget}.");
-            Debug.Log($"Current Pos: {currentPosition}, Target: {flyingTarget}\n");
-            newDir = flyingTarget - currentPosition;
+            Debug.Log($"Current Pos: {currentPosition}, Target: {flyingTarget.position}\n");
+            newDir = flyingTarget.position - currentPosition;
         }
         else if (distanceFromTarget < radiusMinMax.x)  // very close to target (distance less than min dist) => fly directly away from target
         {
             Debug.Log($"{gameObject.name}: moving directly away from target. Distance: {distanceFromTarget}.");
-            newDir = currentPosition - flyingTarget;
+            newDir = currentPosition - flyingTarget.position;
         }
         else // between max and min distances from target => play around
         {

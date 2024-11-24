@@ -20,7 +20,10 @@ public class BirdsController : MonoBehaviour
             instantiatedBird.transform.SetParent(birdsAggregator, true);
             RandomFlyer script = instantiatedBird.GetComponent<RandomFlyer>();
             script.homeTarget = homes[Random.Range(0, homes.Count)].transform;
-            script.flyingTarget = birdSpawnVolume.GetRandomPosition();
+
+            GameObject emptyGameObject = new GameObject($"{instantiatedBird.name}_target");
+            emptyGameObject.transform.SetPositionAndRotation(birdSpawnVolume.GetRandomPosition(), Quaternion.identity);
+            script.flyingTarget = emptyGameObject.transform;
         }
     }
 

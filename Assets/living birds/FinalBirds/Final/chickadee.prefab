@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSpeed: 10
-  turnSpeed: 80
+  turnSpeed: 120
   switchSeconds: 3
   idleRatio: 0
   animSpeedMinMax: {x: 0.5, y: 2}
@@ -147,7 +147,7 @@ MonoBehaviour:
   randomBaseOffset: 5
   delayStart: 0
   homeTarget: {fileID: 0}
-  flyingTarget: {x: 0, y: 0, z: 0}
+  flyingTarget: {fileID: 0}
 --- !u!114 &-4417208576623816045
 MonoBehaviour:
   m_ObjectHideFlags: 0
