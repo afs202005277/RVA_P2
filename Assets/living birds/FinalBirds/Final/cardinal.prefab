@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cardinal
       objectReference: {fileID: 0}
+    - target: {fileID: 5350349720872899945, guid: b714804156fc14b4da596e85939d0e8c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aae7627a8ea8a954d9d1fd75fe35f56b, type: 2}
     - target: {fileID: 5350349720877050793, guid: b714804156fc14b4da596e85939d0e8c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -176,7 +180,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e08e0e181d075f74fb89eb8eee77c0f3, type: 2}
+    - target: {fileID: 1629551134536088182, guid: 3b9e515fae261c3448f75d2e243c5d48, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cc778d5dda0a1a4c8a49555bf38e106, type: 2}
     - target: {fileID: 1629551134539200204, guid: 3b9e515fae261c3448f75d2e243c5d48, type: 3}
       propertyPath: m_Name
       value: robin
@@ -176,7 +180,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
