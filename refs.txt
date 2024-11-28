@@ -2,7 +2,8 @@ eagle: https://assetstore.unity.com/packages/3d/characters/animals/birds/egypt-p
 general birds: https://assetstore.unity.com/packages/3d/characters/animals/birds/living-birds-15649
 bee1: https://www.cgtrader.com/free-3d-models/animals/insect/free-high-quality-rigged-bee
 bee2: https://www.cgtrader.com/free-3d-models/animals/insect/bee-animal-66403bb0-eada-4d81-8133-99e4ac259466
-
+tree branches1: https://poly.pizza/m/8qYeGscm0mc
+tree branches2: https://poly.pizza/m/8w-ed__H6Tl
 
 
 

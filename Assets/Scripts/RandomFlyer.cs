@@ -86,7 +86,7 @@ public class RandomFlyer : MonoBehaviour
         {
             if (body.transform.position.y < yMinMax.x + 10f) rotateTarget.y = 1f; else rotateTarget.y = -1f;
         }
-        zturn = Mathf.Clamp(Vector3.SignedAngle(rotateTarget, direction, Vector3.up), -45f, 45f);
+        //zturn = Mathf.Clamp(Vector3.SignedAngle(rotateTarget, direction, Vector3.up), -45f, 45f);
         // Update times
         changeAnim -= Time.fixedDeltaTime;
         changeTarget -= Time.fixedDeltaTime;
@@ -151,18 +151,14 @@ public class RandomFlyer : MonoBehaviour
         }
         else if (distanceFromTarget > radiusMinMax.y) // very far from target (distance greater than max dist) => fly directly to target
         {
-            Debug.Log($"{gameObject.name}: moving directly to target. Distance: {distanceFromTarget}.");
-            Debug.Log($"Current Pos: {currentPosition}, Target: {flyingTarget.position}\n");
             newDir = flyingTarget.position - currentPosition;
         }
         else if (distanceFromTarget < radiusMinMax.x)  // very close to target (distance less than min dist) => fly directly away from target
         {
-            Debug.Log($"{gameObject.name}: moving directly away from target. Distance: {distanceFromTarget}.");
             newDir = currentPosition - flyingTarget.position;
         }
         else // between max and min distances from target => play around
         {
-            Debug.Log($"{gameObject.name}: ideal distance. playing around");
             // 360-degree freedom of choice on the horizontal plane
             float angleXZ = Random.Range(-Mathf.PI, Mathf.PI);
             // Limited max steepness of ascent/descent in the vertical direction

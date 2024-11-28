@@ -20,8 +20,8 @@ public class SunAndMoonMovement : MonoBehaviour
 
     private void Awake()
     {
-        sun.shadows = LightShadows.Soft;
         moon.shadows = LightShadows.None;
+        sun.shadows = LightShadows.Soft;
     }
 
     void Start()
@@ -60,8 +60,8 @@ public class SunAndMoonMovement : MonoBehaviour
 
         if (sunY > 0) // Sun is above the horizon
         {
-            sun.shadows = LightShadows.Soft;
             moon.shadows = LightShadows.None;
+            sun.shadows = LightShadows.Soft;
             moon.intensity = 0;
             sun.intensity = sunIntensity;
         }
