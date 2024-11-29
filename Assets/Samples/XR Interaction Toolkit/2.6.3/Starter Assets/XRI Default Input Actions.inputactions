@@ -687,7 +687,7 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "33754c03-48ec-46ef-9bc6-22ed6bfdd8e8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1013,7 +1013,7 @@
                     "name": "Grab Move",
                     "type": "Button",
                     "id": "c5a6d766-d487-42ae-b293-da4749469e18",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1079,7 +1079,7 @@
                     "path": "<XRController>{LeftHand}/{Primary2DAxis}",
                     "interactions": "",
                     "processors": "StickDeadzone",
-                    "groups": "Continuous Move",
+                    "groups": "Continuous Move;Generic XR Controller",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1864,7 +1864,7 @@
                     "path": "<XRController>{RightHand}/{Primary2DAxis}",
                     "interactions": "Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)",
                     "processors": "",
-                    "groups": "Generic XR Controller",
+                    "groups": "Generic XR Controller;Continuous Move",
                     "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
