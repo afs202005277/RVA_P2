@@ -143,8 +143,6 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
-  - {fileID: 3861591005683355923, guid: 28eceddd31b69be4abd14725dbcffb77, type: 2}
-  - {fileID: 3102714441528364019, guid: 58a84b8ed49b8754e96811efdd10722e, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -771,7 +769,7 @@ PlayerSettings:
   il2cppCompilerConfiguration:
     Android: 0
   il2cppCodeGeneration:
-    Android: 1
+    Android: 0
   managedStrippingLevel:
     EmbeddedLinux: 1
     GameCoreScarlett: 1
