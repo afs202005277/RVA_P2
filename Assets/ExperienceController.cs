@@ -7,7 +7,12 @@ public class ExperienceController : MonoBehaviour
     public GameObject humanPlayer;
     public GameObject beePlayer;
     public GameObject birdPlayer;
-    public float ExperienceTime = 30f;
+    public float experienceTime = 30f;
+    public float animationTime = 1f;
+
+    public GameObject humanEffect;
+    public GameObject beeEffect;
+    public GameObject birdEffect;
 
     public Transform headCamera;
     public Transform leftHand;
@@ -18,6 +23,11 @@ public class ExperienceController : MonoBehaviour
     private bool _holdingRightHand = false;
     private float _leftholdingTime = 0f;
     private float _rightholdingTime = 0f;
+
+    private bool _inExperiment = false;
+
+    public GameObject birdArrivingLeft;
+    public GameObject birdArrivingRight;
 
     private void Update()
     {
@@ -30,9 +40,11 @@ public class ExperienceController : MonoBehaviour
             }
             else
             {
-                if (Time.time - _leftholdingTime > callBirdTime)
+                if (Time.time - _leftholdingTime > callBirdTime && !_inExperiment)
                 {
+                    birdArrivingLeft.SetActive(true);
                     RunBirdExperiment();
+                    _inExperiment = true;
                 }
             }
         }
@@ -51,9 +63,11 @@ public class ExperienceController : MonoBehaviour
             }
             else
             {
-                if (Time.time - _rightholdingTime > callBirdTime)
+                if (Time.time - _rightholdingTime > callBirdTime && !_inExperiment)
                 {
+                    birdArrivingRight.SetActive(true);
                     RunBirdExperiment();
+                    _inExperiment = true;
                 }
             }
         }
@@ -67,32 +81,57 @@ public class ExperienceController : MonoBehaviour
     public void RunBirdExperiment()
     {
         //Need bird animation of arrival
-        humanPlayer.SetActive(false);
-        birdPlayer.SetActive(true);
 
-        StartCoroutine(FinishExperience(ExperienceTime, birdPlayer, null));
+        humanEffect.SetActive(true);
+
+        StartCoroutine(EffectTransformation(birdPlayer, birdEffect, null));
     }
 
     public void RunBeeExperiment(GameObject bee)
     {
         bee.SetActive(false);
         beePlayer.transform.position = bee.transform.position;
-        humanPlayer.SetActive(false);
-        beePlayer.SetActive(true);
 
-        StartCoroutine(FinishExperience(ExperienceTime, beePlayer, bee));
+        humanEffect.SetActive(true);
+
+        StartCoroutine(EffectTransformation(beePlayer, beeEffect, bee));
+    }
+
+    private IEnumerator FinishExperience(float delay, GameObject animalPlayer, GameObject animalEffect, GameObject animal)
+    {
+        yield return new WaitForSeconds(delay);
+        animalEffect.SetActive(true);
+
+        StartCoroutine(EffectTransformationBack(animalPlayer, animalEffect, animal));
+
 
     }
 
-    private IEnumerator FinishExperience(float delay, GameObject animalPlayer, GameObject animal)
+    private IEnumerator EffectTransformation(GameObject animalPlayer, GameObject animalEffect, GameObject animal = null)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(animationTime);
+
+        humanEffect.SetActive(false);
+
+        humanPlayer.SetActive(false);
+        animalPlayer.SetActive(true);
+
+        StartCoroutine(FinishExperience(experienceTime, animalPlayer, animalEffect, animal));
+    }
+
+    private IEnumerator EffectTransformationBack(GameObject animalPlayer, GameObject animalEffect, GameObject animal = null)
+    {
+        yield return new WaitForSeconds(animationTime);
+        animalEffect.SetActive(false);
+        birdArrivingLeft.SetActive(false);
+        birdArrivingRight.SetActive(false);
 
         animalPlayer.SetActive(false);
         humanPlayer.SetActive(true);
         if (animal != null)
             animal.SetActive(true);
-
-
+        _inExperiment = false;
+        _holdingLeftHand = false;
+        _holdingRightHand = false;
     }
 }
