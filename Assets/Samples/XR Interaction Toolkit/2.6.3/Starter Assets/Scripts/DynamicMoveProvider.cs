@@ -93,6 +93,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             set => m_RightHandMovementDirection = value;
         }
 
+        public AudioSource audioSource;
+
         Transform m_CombinedTransform;
         Pose m_LeftMovementPose = Pose.identity;
         Pose m_RightMovementPose = Pose.identity;
@@ -116,7 +118,18 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             // Don't need to do anything if the total input is zero.
             // This is the same check as the base method.
             if (input == Vector2.zero)
+            {
+                if (audioSource != null && audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
                 return Vector3.zero;
+            }
+
+            if (audioSource != null && !audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
 
             // Initialize the Head Transform if necessary, getting the Camera from XR Origin
             if (m_HeadTransform == null)
