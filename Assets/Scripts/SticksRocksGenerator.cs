@@ -51,7 +51,7 @@ public class SticksRocksGenerator : MonoBehaviour
                 GameObject prefabToSpawn = (Random.value <= stickProbability) ? sticks[Random.Range(0, sticks.Length)] : rocks[Random.Range(0, rocks.Length)];
                 GameObject inst = Instantiate(prefabToSpawn, randomPoint, prefabToSpawn.transform.rotation);
                 inst.name = inst.name + $"__{i}";
-                Debug.Log($"{inst.name}: {randomPoint}");
+                // Debug.Log($"{inst.name}: {randomPoint}");
             }
             else
             {
