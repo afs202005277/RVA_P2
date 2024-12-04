@@ -21,18 +21,4 @@ public class BirdSpawnVolume : MonoBehaviour
 
         return new Vector3(randomX, randomY, randomZ);
     }
-
-#if UNITY_EDITOR
-    // Draw the spawn area in the Scene view
-    private void OnDrawGizmos()
-    {
-        if (Application.isPlaying) return;
-        if (!boxCollider) return;
-
-        Gizmos.color = new Color(0, 1, 0, 0.3f); // Green with transparency
-        Gizmos.DrawCube(boxCollider.bounds.center, boxCollider.bounds.size);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(boxCollider.bounds.center, boxCollider.bounds.size);
-    }
-#endif
 }
