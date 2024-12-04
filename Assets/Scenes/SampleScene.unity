@@ -1518,7 +1518,7 @@ MonoBehaviour:
   spawnCount: 15
   playerPos: {fileID: 202401947}
   stickProbability: 0.5
-  spawnHeightOffset: 10
+  spawnHeightOffset: 15
 --- !u!114 &383730566
 MonoBehaviour:
   m_ObjectHideFlags: 0

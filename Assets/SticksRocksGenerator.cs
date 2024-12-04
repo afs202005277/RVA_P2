@@ -42,12 +42,16 @@ public class SticksRocksGenerator : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             Vector3 randomPoint = center + Random.insideUnitSphere * boundingSphereRadius;
-            randomPoint.y = terrain.SampleHeight(randomPoint) + spawnHeightOffset;
+
+            randomPoint.y = Terrain.activeTerrain.SampleHeight(new Vector3(randomPoint.x, 0, randomPoint.z)) + spawnHeightOffset;
+
 
             if (randomPoint.y > 0) // Ensure it's above terrain
             {
                 GameObject prefabToSpawn = (Random.value <= stickProbability) ? sticks[Random.Range(0, sticks.Length)] : rocks[Random.Range(0, rocks.Length)];
-                Instantiate(prefabToSpawn, randomPoint, prefabToSpawn.transform.rotation);
+                GameObject inst = Instantiate(prefabToSpawn, randomPoint, prefabToSpawn.transform.rotation);
+                inst.name = inst.name + $"__{i}";
+                Debug.Log($"{inst.name}: {randomPoint}");
             }
             else
             {
