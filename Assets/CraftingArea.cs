@@ -42,6 +42,16 @@ public class CraftingAreaWithCubeUI : MonoBehaviour
                 }
                 ingredientCounter[ingredientName]++;
                 ingredientsPlaced.Add(other.gameObject);
+                Rigidbody ingredientRigidbody = other.gameObject.GetComponent<Rigidbody>();
+                if (ingredientRigidbody != null)
+                {
+                    ingredientRigidbody.velocity = Vector3.zero;
+                    ingredientRigidbody.angularVelocity = Vector3.zero;
+                    ingredientRigidbody.useGravity = false;
+                    ingredientRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
+                    Debug.Log($"{other.name} has been placed in the drop area and frozen.");
+                }
                 UpdateRecipeUI();
 
                 if (CheckRecipeCompletion())
