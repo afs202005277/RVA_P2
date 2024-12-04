@@ -1,6 +1,7 @@
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class SunAndMoonMovement : MonoBehaviour
+public class DayNightController : MonoBehaviour
 {
     [Tooltip("Duration of the day in seconds (from sunrise to sunrise).")]
     public float dayDuration = 60f;
@@ -16,7 +17,17 @@ public class SunAndMoonMovement : MonoBehaviour
     public Light moon;
     public int moonIntensity;
 
+    public GameObject[] firePlaces;
+
+    public AudioSource forestSounds;
+    public AudioClip nightSound;
+    public AudioClip daySound;
+
+    [Tooltip("GameObject containing all bird GameObjects as children.")]
+    public GameObject birds;
+
     private float angularSpeed;
+    private bool isDay; // Tracks whether it's currently day or night
 
     private void Awake()
     {
@@ -32,6 +43,15 @@ public class SunAndMoonMovement : MonoBehaviour
         {
             Debug.LogError("Moon/sun directional light is not assigned!");
         }
+
+        if (forestSounds == null)
+        {
+            Debug.LogError("ForestSounds audio source is not assigned!");
+        }
+
+        // Initialize the isDay variable based on the sun's starting position
+        isDay = sun.transform.position.y > 0;
+        UpdateEnvironment();
     }
 
     void Update()
@@ -58,12 +78,48 @@ public class SunAndMoonMovement : MonoBehaviour
         // Set the moon's position and rotation
         moon.transform.SetPositionAndRotation(new Vector3(moonX, moonY, moonZ), Quaternion.LookRotation(-moon.transform.position.normalized));
 
-        if (sunY > 0) // Sun is above the horizon
+        // Check if the sun's status (above or below horizon) has changed
+        bool currentIsDay = sunY > 0;
+        if (currentIsDay != isDay)
+        {
+            isDay = currentIsDay;
+            UpdateEnvironment();
+        }
+    }
+
+    private void UpdateEnvironment()
+    {
+        if (isDay) // Sun is above the horizon
         {
             moon.shadows = LightShadows.None;
             sun.shadows = LightShadows.Soft;
             moon.intensity = 0;
             sun.intensity = sunIntensity;
+
+            // Disable fire and set day sound
+            foreach (GameObject firePlace in firePlaces)
+            {
+                Transform fire = firePlace.transform.Find("Fire");
+                if (fire != null)
+                {
+                    fire.gameObject.SetActive(false);
+                }
+            }
+
+            if (birds != null)
+            {
+                foreach (Transform bird in birds.transform)
+                {
+                    AudioSource birdAudio = bird.GetComponent<AudioSource>();
+                    if (birdAudio != null)
+                    {
+                        birdAudio.enabled = true;
+                    }
+                }
+            }
+
+            forestSounds.clip = daySound;
+            forestSounds.Play();
         }
         else // Moon is above the horizon
         {
@@ -71,6 +127,31 @@ public class SunAndMoonMovement : MonoBehaviour
             moon.shadows = LightShadows.Soft;
             sun.intensity = 0;
             moon.intensity = moonIntensity;
+
+            // Enable fire and set night sound
+            foreach (GameObject firePlace in firePlaces)
+            {
+                Transform fire = firePlace.transform.Find("Fire");
+                if (fire != null)
+                {
+                    fire.gameObject.SetActive(true);
+                }
+            }
+
+            if (birds != null)
+            {
+                foreach (Transform bird in birds.transform)
+                {
+                    AudioSource birdAudio = bird.GetComponent<AudioSource>();
+                    if (birdAudio != null)
+                    {
+                        birdAudio.enabled = false;
+                    }
+                }
+            }
+
+            forestSounds.clip = nightSound;
+            forestSounds.Play();
         }
     }
 }
