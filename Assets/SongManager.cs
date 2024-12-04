@@ -34,7 +34,10 @@ public class BirdSongManager : MonoBehaviour
             audioSource.clip = nextSong;
 
             // Play the chosen song
-            audioSource.Play();
+            if (audioSource.enabled)
+            {
+                audioSource.Play();
+            }
 
             // Wait for the song to finish playing before continuing
             yield return new WaitForSeconds(audioSource.clip.length);
