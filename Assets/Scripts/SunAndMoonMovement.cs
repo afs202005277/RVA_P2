@@ -156,6 +156,7 @@ public class DayNightController : MonoBehaviour
     {
         light.intensity = intensity;
         light.shadows = shadow;
+        SwitchPrimaryLight(light);
         return light;
     }
 
@@ -165,6 +166,12 @@ public class DayNightController : MonoBehaviour
         light.shadows = LightShadows.None;
 
         return light;
+    }
+
+    private void SwitchPrimaryLight(Light newLight)
+    {
+        RenderSettings.sun = newLight;
+        DynamicGI.UpdateEnvironment();
     }
 }
 
