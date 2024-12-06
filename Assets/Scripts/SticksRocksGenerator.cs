@@ -42,14 +42,13 @@ public class SticksRocksGenerator : MonoBehaviour
         Vector3 player_position = playerPos.position;
         foreach (GameObject obj in spawnedObjects)
         {
-            Outline outline = obj.GetComponent<Outline>();
             if (Vector3.Distance(obj.transform.position, player_position) <= boundingSphereRadius) // active if close to player
-            { 
-                outline.enabled = true;
+            {
+                obj.GetComponent<Outline>().enabled = true;
             }
             else
             {
-                outline.enabled = false;
+                obj.GetComponent<Outline>().enabled = false;
             }
         }
     }
