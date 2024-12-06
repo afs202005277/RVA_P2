@@ -1,22 +1,27 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SticksRocksGenerator : MonoBehaviour
 {
     public GameObject[] sticks;
     public GameObject[] rocks;
-    public float boundingSphereRadius; // Radius of the bounding sphere
-    public int spawnCount; // Number of objects to spawn per batch
+    public float boundingSphereRadius;
+    public float worldRadius;
+    public int spawnCount;
     public Transform playerPos;
 
     public float stickProbability;
     public float spawnHeightOffset;
 
-    private Vector3 lastSpawnPosition;
     private Terrain terrain;
+    private Vector3 center = Vector3.zero;
+
+    private GameObject[] spawnedObjects;
+
+    private bool ready = false;
 
     private void Start()
     {
-        lastSpawnPosition = playerPos.position;
         terrain = Terrain.activeTerrain;
 
         if (terrain == null)
@@ -25,23 +30,26 @@ public class SticksRocksGenerator : MonoBehaviour
             return;
         }
 
-        SpawnSticksAndRocks(lastSpawnPosition);
+        SpawnSticksAndRocks(center);
     }
 
     private void Update()
     {
-        if (Vector3.Distance(playerPos.position, lastSpawnPosition) >= boundingSphereRadius)
+        if (!ready) { return; }
+
+        Vector3 player_position = playerPos.position;
+        foreach (GameObject obj in spawnedObjects)
         {
-            lastSpawnPosition = playerPos.position;
-            SpawnSticksAndRocks(lastSpawnPosition);
+            obj.SetActive(Vector3.Distance(obj.transform.position, player_position) <= boundingSphereRadius); // active if close to player
         }
     }
 
     private void SpawnSticksAndRocks(Vector3 center)
     {
+        List<GameObject> s_objects = new List<GameObject>();
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 randomPoint = center + Random.insideUnitSphere * boundingSphereRadius;
+            Vector3 randomPoint = center + Random.insideUnitSphere * worldRadius;
 
             randomPoint.y = Terrain.activeTerrain.SampleHeight(new Vector3(randomPoint.x, 0, randomPoint.z)) + spawnHeightOffset;
 
@@ -52,12 +60,15 @@ public class SticksRocksGenerator : MonoBehaviour
                 GameObject inst = Instantiate(prefabToSpawn, randomPoint, prefabToSpawn.transform.rotation);
                 inst.name = inst.name + $"__{i}";
                 // Debug.Log($"{inst.name}: {randomPoint}");
+                s_objects.Add(inst);
             }
             else
             {
                 Debug.LogWarning($"Object spawned below terrain: {randomPoint}.");
             }
         }
+        spawnedObjects = s_objects.ToArray();
+        ready = true;
     }
 
     private void OnDrawGizmosSelected()
@@ -65,5 +76,9 @@ public class SticksRocksGenerator : MonoBehaviour
         // Visualize the bounding sphere in the editor
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(playerPos.position, boundingSphereRadius);
+
+        // Visualize the world sphere in the editor
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(center, worldRadius);
     }
 }
