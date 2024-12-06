@@ -114,15 +114,6 @@ public class DayNightController : MonoBehaviour
             sun = TurnOnLight(sun, sunIntensity, LightShadows.Soft);
             moon = TurnOffLight(moon);
 
-            foreach (GameObject firePlace in firePlaces)
-            {
-                Transform fire = firePlace.transform.Find("Fire");
-                if (fire != null)
-                {
-                    fire.gameObject.SetActive(false);
-                }
-            }
-
             if (birds != null)
             {
                 foreach (Transform bird in birds.transform)
@@ -143,15 +134,6 @@ public class DayNightController : MonoBehaviour
             skyboxTransition.TransitionToNight();
             moon = TurnOnLight(moon, moonIntensity, LightShadows.Soft);
             sun = TurnOffLight(sun);
-
-            foreach (GameObject firePlace in firePlaces)
-            {
-                Transform fire = firePlace.transform.Find("Fire");
-                if (fire != null)
-                {
-                    fire.gameObject.SetActive(true);
-                }
-            }
 
             if (birds != null)
             {

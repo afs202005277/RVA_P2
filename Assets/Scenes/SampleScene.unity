@@ -1759,6 +1759,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skyboxBlendMaterial: {fileID: 2100000, guid: 8da8832c17b2cf84fb4c02efd1330a0e, type: 2}
   transitionSpeed: 0.5
+--- !u!1001 &397905199
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 67.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9985273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.054253086
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 6.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987859033391806863, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: prefabToEnable
+      value: 
+      objectReference: {fileID: 1617921113}
+    - target: {fileID: 4851971380598314907, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: m_Name
+      value: CraftingArea
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
 --- !u!1 &400558131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
@@ -16360,6 +16429,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6758277866421494385, guid: e4f26a2795077c749a9c01f2c33c797d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758277866421494385, guid: e4f26a2795077c749a9c01f2c33c797d, type: 3}
+      propertyPath: m_TagString
+      value: Fire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -18470,3 +18547,4 @@ SceneRoots:
   - {fileID: 1822122772}
   - {fileID: 5773256366229208691}
   - {fileID: 838188241}
+  - {fileID: 397905199}

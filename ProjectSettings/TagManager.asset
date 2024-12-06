@@ -10,6 +10,7 @@ TagManager:
   - TrackingObject
   - Actors
   - Bridge
+  - Fire
   layers:
   - Default
   - TransparentFX
