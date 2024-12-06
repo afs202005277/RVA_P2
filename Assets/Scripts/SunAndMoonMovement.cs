@@ -26,6 +26,8 @@ public class DayNightController : MonoBehaviour
     [Tooltip("GameObject containing all bird GameObjects as children.")]
     public GameObject birds;
 
+    public SkyboxTransition skyboxTransition;
+
     private float angularSpeed;
     private bool isDay; // Tracks whether it's currently day or night
 
@@ -56,29 +58,22 @@ public class DayNightController : MonoBehaviour
 
     void Update()
     {
-        // Calculate the angle of the sun in its orbit
         float angle = Time.time * angularSpeed;
 
-        // Convert angle to radians for calculations
         float radians = Mathf.Deg2Rad * angle;
 
-        // Calculate the sun's position
         float sunX = orbitRadius * Mathf.Cos(radians);
         float sunZ = orbitRadius * Mathf.Sin(radians);
-        float sunY = orbitRadius * Mathf.Sin(radians); // Optional for vertical movement
+        float sunY = orbitRadius * Mathf.Sin(radians);
 
-        // Set the sun's position
         sun.transform.SetPositionAndRotation(new Vector3(sunX, sunY, sunZ), Quaternion.LookRotation(-sun.transform.position.normalized));
 
-        // Calculate the moon's position (symmetric to the sun)
         float moonX = -sunX;
         float moonZ = -sunZ;
         float moonY = -sunY;
 
-        // Set the moon's position and rotation
         moon.transform.SetPositionAndRotation(new Vector3(moonX, moonY, moonZ), Quaternion.LookRotation(-moon.transform.position.normalized));
 
-        // Check if the sun's status (above or below horizon) has changed
         bool currentIsDay = sunY > 0;
         if (currentIsDay != isDay)
         {
@@ -89,14 +84,14 @@ public class DayNightController : MonoBehaviour
 
     private void UpdateEnvironment()
     {
-        if (isDay) // Sun is above the horizon
+        if (isDay)
         {
+            skyboxTransition.TransitionToDay();
             moon.shadows = LightShadows.None;
             sun.shadows = LightShadows.Soft;
             moon.intensity = 0;
             sun.intensity = sunIntensity;
 
-            // Disable fire and set day sound
             foreach (GameObject firePlace in firePlaces)
             {
                 Transform fire = firePlace.transform.Find("Fire");
@@ -121,14 +116,14 @@ public class DayNightController : MonoBehaviour
             forestSounds.clip = daySound;
             forestSounds.Play();
         }
-        else // Moon is above the horizon
+        else
         {
+            skyboxTransition.TransitionToNight();
             sun.shadows = LightShadows.None;
             moon.shadows = LightShadows.Soft;
             sun.intensity = 0;
             moon.intensity = moonIntensity;
 
-            // Enable fire and set night sound
             foreach (GameObject firePlace in firePlaces)
             {
                 Transform fire = firePlace.transform.Find("Fire");

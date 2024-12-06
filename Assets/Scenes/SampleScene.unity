@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7416536dbe0334cfd888dd1beb75a9fb, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8da8832c17b2cf84fb4c02efd1330a0e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1613,6 +1613,7 @@ GameObject:
   - component: {fileID: 383730563}
   - component: {fileID: 383730565}
   - component: {fileID: 383730566}
+  - component: {fileID: 383730567}
   m_Layer: 0
   m_Name: GeneralManagers
   m_TagString: Untagged
@@ -1659,6 +1660,7 @@ MonoBehaviour:
   nightSound: {fileID: 8300000, guid: 21538f6160ff48040a8488deb4ed6d5e, type: 3}
   daySound: {fileID: 8300000, guid: 749428170bd956149a4ede7c65dbb8b6, type: 3}
   birds: {fileID: 1669308291}
+  skyboxTransition: {fileID: 383730567}
 --- !u!114 &383730564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,6 +1723,20 @@ MonoBehaviour:
   callBirdTime: 5
   birdArrivingLeft: {fileID: 645604131}
   birdArrivingRight: {fileID: 528275543}
+--- !u!114 &383730567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383730560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665b34c503d15f04a917756919154c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxBlendMaterial: {fileID: 2100000, guid: 8da8832c17b2cf84fb4c02efd1330a0e, type: 2}
+  transitionSpeed: 0.5
 --- !u!1 &400558131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
@@ -15152,7 +15168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15160,7 +15176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_LocalRotation.w
