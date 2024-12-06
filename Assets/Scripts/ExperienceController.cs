@@ -40,6 +40,8 @@ public class ExperienceController : MonoBehaviour
 
     public Volume globalVolume;
 
+    public GameObject portal;
+
     private void Start()
     {
         fishPlayer.transform.position = fishSpawn.transform.position;
@@ -161,5 +163,10 @@ public class ExperienceController : MonoBehaviour
         _inExperiment = false;
         _holdingLeftHand = false;
         _holdingRightHand = false;
+    }
+
+    public void ExitButton()
+    {
+        portal.SetActive(true);
     }
 }
