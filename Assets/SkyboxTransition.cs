@@ -21,11 +21,6 @@ public class SkyboxTransition : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            transitioningToNight = !transitioningToNight;
-        }
-
         if (transitioningToNight)
         {
             blendValue = Mathf.Min(1.0f, blendValue + transitionSpeed * Time.deltaTime);
