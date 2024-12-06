@@ -1692,7 +1692,7 @@ MonoBehaviour:
   - {fileID: 1751925904234356, guid: 7e85b01b86de8464f994f3f132e2d51d, type: 3}
   boundingSphereRadius: 30
   spawnCount: 15
-  playerPos: {fileID: 202401947}
+  playerPos: {fileID: 8733093505947489642}
   stickProbability: 0.5
   spawnHeightOffset: 15
 --- !u!114 &383730566
