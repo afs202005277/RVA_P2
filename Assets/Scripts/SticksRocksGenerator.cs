@@ -42,6 +42,7 @@ public class SticksRocksGenerator : MonoBehaviour
         Vector3 player_position = playerPos.position;
         foreach (GameObject obj in spawnedObjects)
         {
+            if (obj == null) { continue; }
             if (Vector3.Distance(obj.transform.position, player_position) <= boundingSphereRadius) // active if close to player
             {
                 obj.GetComponent<Outline>().enabled = true;
@@ -98,26 +99,5 @@ public class SticksRocksGenerator : MonoBehaviour
         // Visualize the world sphere in the editor
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(center, worldRadius);
-    }
-
-    public void DeleteGameObjectsFromList(List<GameObject> objectsToDelete)
-    {
-        ready = false;
-        // Create a temporary list to store the remaining GameObjects
-        List<GameObject> remainingPrefabs = new List<GameObject>();
-
-        foreach (GameObject prefab in spawnedObjects)
-        {
-            // Add to the remaining list only if it's not in the objectsToDelete list
-            if (!objectsToDelete.Contains(prefab))
-            {
-                remainingPrefabs.Add(prefab);
-            }
-        }
-
-        // Update the instantiatedPrefabs array with the remaining prefabs
-        spawnedObjects = remainingPrefabs.ToArray();
-
-        ready = true;
     }
 }

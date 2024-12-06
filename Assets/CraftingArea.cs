@@ -23,8 +23,6 @@ public class CraftingAreaWithCubeUI : MonoBehaviour
 
     public GameObject player;
 
-    public SticksRocksGenerator sticksRocksGenerator;
-
     private void Start()
     {
         UpdateRecipeUI();
@@ -79,7 +77,6 @@ public class CraftingAreaWithCubeUI : MonoBehaviour
     {
         foreach (var ingredient in ingredientsPlaced)
         {
-            sticksRocksGenerator.DeleteGameObjectsFromList(ingredientsPlaced);
             Destroy(ingredient);
         }
     }
