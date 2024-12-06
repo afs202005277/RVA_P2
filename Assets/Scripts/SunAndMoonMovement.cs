@@ -30,6 +30,9 @@ public class DayNightController : MonoBehaviour
 
     private float angularSpeed;
     private bool isDay; // Tracks whether it's currently day or night
+    private LightShadows moonShadows = LightShadows.Soft;
+    private LightShadows sunShadows = LightShadows.Soft;
+    private float horizonOffset = 1f;
 
     private void Awake()
     {
@@ -59,22 +62,42 @@ public class DayNightController : MonoBehaviour
     void Update()
     {
         float angle = Time.time * angularSpeed;
-
         float radians = Mathf.Deg2Rad * angle;
 
         float sunX = orbitRadius * Mathf.Cos(radians);
         float sunZ = orbitRadius * Mathf.Sin(radians);
         float sunY = orbitRadius * Mathf.Sin(radians);
 
-        sun.transform.SetPositionAndRotation(new Vector3(sunX, sunY, sunZ), Quaternion.LookRotation(-sun.transform.position.normalized));
+        sun.transform.SetPositionAndRotation(
+            new Vector3(sunX, sunY, sunZ),
+            Quaternion.LookRotation(-sun.transform.position.normalized)
+        );
 
-        float moonX = -sunX;
-        float moonZ = -sunZ;
-        float moonY = -sunY;
-
-        moon.transform.SetPositionAndRotation(new Vector3(moonX, moonY, moonZ), Quaternion.LookRotation(-moon.transform.position.normalized));
-
+        // Check if it is daytime
         bool currentIsDay = sunY > 0;
+
+        if (currentIsDay)
+        {
+            moon = TurnOffLight(moon);
+            sun = TurnOnLight(sun, sunIntensity, sunShadows);
+        }
+        else
+        {
+            moon = TurnOnLight(moon, moonIntensity, moonShadows);
+            sun = TurnOffLight(sun);
+
+            // Moon position: Opposite side, slightly above the horizon
+            float moonX = -sunX;
+            float moonZ = -sunZ;
+            float moonY = Mathf.Max(-sunY, horizonOffset); // Ensure moon stays above the horizon
+
+            moon.transform.SetPositionAndRotation(
+                new Vector3(moonX, moonY, moonZ),
+                Quaternion.LookRotation(-moon.transform.position.normalized)
+            );
+        }
+
+        // Update environment when the state changes
         if (currentIsDay != isDay)
         {
             isDay = currentIsDay;
@@ -82,15 +105,14 @@ public class DayNightController : MonoBehaviour
         }
     }
 
+
     private void UpdateEnvironment()
     {
         if (isDay)
         {
             skyboxTransition.TransitionToDay();
-            moon.shadows = LightShadows.None;
-            sun.shadows = LightShadows.Soft;
-            moon.intensity = 0;
-            sun.intensity = sunIntensity;
+            sun = TurnOnLight(sun, sunIntensity, LightShadows.Soft);
+            moon = TurnOffLight(moon);
 
             foreach (GameObject firePlace in firePlaces)
             {
@@ -119,10 +141,8 @@ public class DayNightController : MonoBehaviour
         else
         {
             skyboxTransition.TransitionToNight();
-            sun.shadows = LightShadows.None;
-            moon.shadows = LightShadows.Soft;
-            sun.intensity = 0;
-            moon.intensity = moonIntensity;
+            moon = TurnOnLight(moon, moonIntensity, LightShadows.Soft);
+            sun = TurnOffLight(sun);
 
             foreach (GameObject firePlace in firePlaces)
             {
@@ -149,4 +169,20 @@ public class DayNightController : MonoBehaviour
             forestSounds.Play();
         }
     }
+
+    private Light TurnOnLight(Light light, float intensity, LightShadows shadow)
+    {
+        light.intensity = intensity;
+        light.shadows = shadow;
+        return light;
+    }
+
+    private Light TurnOffLight(Light light)
+    {
+        light.intensity = 0;
+        light.shadows = LightShadows.None;
+
+        return light;
+    }
 }
+

@@ -1666,11 +1666,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayDuration: 60
-  orbitRadius: 100
+  orbitRadius: 200
   sun: {fileID: 705507994}
   sunIntensity: 2
   moon: {fileID: 1327826820}
-  moonIntensity: 10
+  moonIntensity: 1
   firePlaces:
   - {fileID: 1359732032}
   forestSounds: {fileID: 911968476}
