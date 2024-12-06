@@ -9,6 +9,8 @@ public class SticksRocksGenerator : MonoBehaviour
     public float worldRadius;
     public int spawnCount;
     public Transform playerPos;
+    public Transform rockAggregator;
+    public Transform stickAggregator;
 
     public float stickProbability;
     public float spawnHeightOffset;
@@ -56,9 +58,18 @@ public class SticksRocksGenerator : MonoBehaviour
 
             if (randomPoint.y > 0) // Ensure it's above terrain
             {
-                GameObject prefabToSpawn = (Random.value <= stickProbability) ? sticks[Random.Range(0, sticks.Length)] : rocks[Random.Range(0, rocks.Length)];
+                bool isStick = Random.value <= stickProbability;
+                GameObject prefabToSpawn = isStick ? sticks[Random.Range(0, sticks.Length)] : rocks[Random.Range(0, rocks.Length)];
                 GameObject inst = Instantiate(prefabToSpawn, randomPoint, prefabToSpawn.transform.rotation);
                 inst.name = inst.name + $"__{i}";
+                if (isStick)
+                {
+                    inst.transform.SetParent(stickAggregator.transform, true);
+                }
+                else
+                {
+                    inst.transform.SetParent(rockAggregator.transform, true);
+                }
                 // Debug.Log($"{inst.name}: {randomPoint}");
                 s_objects.Add(inst);
             }

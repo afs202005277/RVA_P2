@@ -7,6 +7,7 @@ public class BirdsController : MonoBehaviour
     public GameObject[] availableBirds;
     public GameObject homesAggregator;
     public Transform birdsAggregator;
+    public Transform targetAggregator;
     public BirdSpawnVolume birdSpawnVolume;
     public int numBirds;
 
@@ -23,6 +24,7 @@ public class BirdsController : MonoBehaviour
 
             GameObject emptyGameObject = new GameObject($"{instantiatedBird.name}_target");
             emptyGameObject.transform.SetPositionAndRotation(birdSpawnVolume.GetRandomPosition(), Quaternion.identity);
+            emptyGameObject.transform.SetParent(targetAggregator);
             script.flyingTarget = emptyGameObject.transform;
         }
     }
