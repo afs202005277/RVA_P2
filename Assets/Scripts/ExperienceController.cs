@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ExperienceController : MonoBehaviour
 {
     public GameObject humanPlayer;
     public GameObject beePlayer;
     public GameObject birdPlayer;
+    public GameObject fishPlayer;
     public float experienceTime = 30f;
     public float animationTime = 1f;
 
     public GameObject humanEffect;
     public GameObject beeEffect;
     public GameObject birdEffect;
+    public GameObject fishEffect;
+
+    public GameObject fishSpawn;
 
     public Transform headCamera;
     public Transform leftHand;
@@ -28,6 +35,15 @@ public class ExperienceController : MonoBehaviour
 
     public GameObject birdArrivingLeft;
     public GameObject birdArrivingRight;
+
+    public XRSimpleInteractable waterInteractable;
+
+    public Volume globalVolume;
+
+    private void Start()
+    {
+        fishPlayer.transform.position = fishSpawn.transform.position;
+    }
 
     private void Update()
     {
@@ -81,10 +97,18 @@ public class ExperienceController : MonoBehaviour
     public void RunBirdExperiment()
     {
         //Need bird animation of arrival
-
+        birdPlayer.transform.position = humanPlayer.transform.position;
         humanEffect.SetActive(true);
 
         StartCoroutine(EffectTransformation(birdPlayer, birdEffect, null));
+    }
+
+    public void RunFishExperiment()
+    {
+        humanEffect.SetActive(true);
+        globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+        colorAdjustments.active = true;
+        StartCoroutine(EffectTransformation(fishPlayer, fishEffect, null));
     }
 
     public void RunBeeExperiment(GameObject bee)
@@ -102,6 +126,7 @@ public class ExperienceController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         animalEffect.SetActive(true);
 
+
         StartCoroutine(EffectTransformationBack(animalPlayer, animalEffect, animal));
 
 
@@ -112,7 +137,7 @@ public class ExperienceController : MonoBehaviour
         yield return new WaitForSeconds(animationTime);
 
         humanEffect.SetActive(false);
-
+        waterInteractable.enabled = false;
         humanPlayer.SetActive(false);
         animalPlayer.SetActive(true);
 
@@ -122,6 +147,9 @@ public class ExperienceController : MonoBehaviour
     private IEnumerator EffectTransformationBack(GameObject animalPlayer, GameObject animalEffect, GameObject animal = null)
     {
         yield return new WaitForSeconds(animationTime);
+        waterInteractable.enabled = true;
+        globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+        colorAdjustments.active = false;
         animalEffect.SetActive(false);
         birdArrivingLeft.SetActive(false);
         birdArrivingRight.SetActive(false);
