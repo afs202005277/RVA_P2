@@ -99,4 +99,25 @@ public class SticksRocksGenerator : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(center, worldRadius);
     }
+
+    public void DeleteGameObjectsFromList(List<GameObject> objectsToDelete)
+    {
+        ready = false;
+        // Create a temporary list to store the remaining GameObjects
+        List<GameObject> remainingPrefabs = new List<GameObject>();
+
+        foreach (GameObject prefab in spawnedObjects)
+        {
+            // Add to the remaining list only if it's not in the objectsToDelete list
+            if (!objectsToDelete.Contains(prefab))
+            {
+                remainingPrefabs.Add(prefab);
+            }
+        }
+
+        // Update the instantiatedPrefabs array with the remaining prefabs
+        spawnedObjects = remainingPrefabs.ToArray();
+
+        ready = true;
+    }
 }
