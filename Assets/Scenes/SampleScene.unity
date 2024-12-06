@@ -1715,7 +1715,7 @@ MonoBehaviour:
   - {fileID: 1410723539921334, guid: ba0e1358ea146214989b89135b2a4de9, type: 3}
   - {fileID: 1751925904234356, guid: 7e85b01b86de8464f994f3f132e2d51d, type: 3}
   boundingSphereRadius: 30
-  worldRadius: 295
+  worldRadius: 150
   spawnCount: 150
   playerPos: {fileID: 8733093505947489642}
   rockAggregator: {fileID: 1206642257}
