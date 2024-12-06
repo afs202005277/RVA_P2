@@ -99,7 +99,7 @@ public class CraftingAreaWithCubeUI : MonoBehaviour
             return;
         }
 
-        string recipeText = "Materials Needed:\n";
+        string recipeText = $"Materials Needed for {prefabToEnable.gameObject.tag}:\n";
         foreach (var recipe in recipes)
         {
             int currentAmount = ingredientCounter.ContainsKey(recipe.ingredientName) ? ingredientCounter[recipe.ingredientName] : 0;

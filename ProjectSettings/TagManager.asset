@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Branch
   - Rock
+  - Stick
+  - TrackingObject
+  - Actors
+  - Bridge
   layers:
   - Default
   - TransparentFX
