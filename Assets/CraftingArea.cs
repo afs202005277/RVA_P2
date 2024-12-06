@@ -21,9 +21,18 @@ public class CraftingAreaWithCubeUI : MonoBehaviour
 
     public TextMeshProUGUI floatingText;
 
+    public GameObject player;
+
     private void Start()
     {
         UpdateRecipeUI();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 direction = floatingText.transform.position - player.transform.position;
+        direction.y = 0;
+        floatingText.transform.forward = direction;
     }
 
     private void OnTriggerEnter(Collider other)
