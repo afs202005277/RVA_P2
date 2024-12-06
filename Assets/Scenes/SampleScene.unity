@@ -1485,6 +1485,26 @@ PrefabInstance:
       propertyPath: prefabToEnable
       value: 
       objectReference: {fileID: 658167384}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].ingredientName
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].requiredAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].ingredientName
+      value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].requiredAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4851971380598314907, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
       propertyPath: m_Name
       value: CraftingArea (1)
@@ -1876,6 +1896,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5030734267259534325, guid: e2698219e3231e94c8765d49b9dd5cff, type: 3}
   m_PrefabInstance: {fileID: 429831249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &436631633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 705507995}
+    m_Modifications:
+    - target: {fileID: 1066320961419670, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_Name
+      value: Sun Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+--- !u!4 &436631634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4538169596089768, guid: ec1861462fc1b46f1a1c1c3c0f1f7f15, type: 3}
+  m_PrefabInstance: {fileID: 436631633}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &467567760
 PrefabInstance:
@@ -2755,7 +2837,8 @@ Transform:
   m_LocalPosition: {x: -15.100401, y: 5.7568016, z: 255.06013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 436631634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 170, y: 0, z: 0}
 --- !u!114 &705507996
@@ -4138,6 +4221,26 @@ PrefabInstance:
       propertyPath: prefabToEnable
       value: 
       objectReference: {fileID: 858978945}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].ingredientName
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].requiredAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].ingredientName
+      value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].requiredAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4851971380598314907, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
       propertyPath: m_Name
       value: CraftingArea (2)
@@ -9617,7 +9720,8 @@ Transform:
   m_LocalPosition: {x: -15.100401, y: 5.7568016, z: 255.06013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1509353954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 170, y: 0, z: 0}
 --- !u!114 &1327826822
@@ -15034,6 +15138,68 @@ MonoBehaviour:
   minMax: {x: 5, y: 9.82758}
   minFalloff: 9
   maxFalloff: 10
+--- !u!1001 &1509353953
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1327826821}
+    m_Modifications:
+    - target: {fileID: 1408581670749804, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_Name
+      value: Moon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+--- !u!4 &1509353954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
+  m_PrefabInstance: {fileID: 1509353953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1522246043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17018,6 +17184,26 @@ PrefabInstance:
       propertyPath: prefabToEnable
       value: 
       objectReference: {fileID: 1374460996}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].ingredientName
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[0].requiredAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].ingredientName
+      value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589685937198122078, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
+      propertyPath: recipes.Array.data[1].requiredAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4851971380598314907, guid: 1cb145958c7d47e498b1386c20edc241, type: 3}
       propertyPath: m_Name
       value: CraftingArea
