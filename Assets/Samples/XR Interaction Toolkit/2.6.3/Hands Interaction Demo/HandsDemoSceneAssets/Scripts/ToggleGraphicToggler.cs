@@ -50,6 +50,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.Hands
                 m_TargetToggle.targetGraphic = m_ToggleOffGraphic;
 
             m_ToggleOnGraphic.gameObject.SetActive(isOn);
+            m_ToggleOffGraphic.gameObject.SetActive(!isOn);
         }
     }
 }

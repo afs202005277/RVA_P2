@@ -15,8 +15,8 @@ MonoBehaviour:
   m_Comments: 
   m_ReadOnly: 1
   m_Value:
-    rightHandLocalPosition: {x: 0, y: -0.05, z: -0.03}
-    leftHandLocalPosition: {x: 0, y: -0.05, z: -0.03}
+    rightHandLocalPosition: {x: 0, y: -0.05, z: -0.01}
+    leftHandLocalPosition: {x: 0, y: -0.05, z: -0.01}
     rightHandLocalRotation: {x: 0, y: 0, z: 180}
     leftHandLocalRotation: {x: 0, y: 0, z: 180}
     palmReferenceAxis: 4
