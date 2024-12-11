@@ -33,6 +33,7 @@ public class DayNightController : MonoBehaviour
     private LightShadows moonShadows = LightShadows.Soft;
     private LightShadows sunShadows = LightShadows.Soft;
     private float horizonOffset = 1f;
+    private float clock = 0f;
 
     private void Awake()
     {
@@ -59,10 +60,23 @@ public class DayNightController : MonoBehaviour
         UpdateEnvironment();
     }
 
+    public void toggleDay(bool isNight)
+    {
+        if (isNight)
+        {
+            clock = dayDuration / 2;
+        }
+        else
+        {
+            clock = 0;
+        }
+    }
+
     void Update()
     {
-        Debug.Log("Audio Listener volume: " + AudioListener.volume);
-        float angle = Time.time * angularSpeed;
+        clock += Time.deltaTime;
+        
+        float angle = clock * angularSpeed;
         float radians = Mathf.Deg2Rad * angle;
 
         float sunX = orbitRadius * Mathf.Cos(radians);
