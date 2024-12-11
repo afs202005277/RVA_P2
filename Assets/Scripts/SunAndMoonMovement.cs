@@ -61,6 +61,7 @@ public class DayNightController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Audio Listener volume: " + AudioListener.volume);
         float angle = Time.time * angularSpeed;
         float radians = Mathf.Deg2Rad * angle;
 

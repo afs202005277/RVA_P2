@@ -7,6 +7,8 @@ public class RandomSeedManager : MonoBehaviour
     void Start()
     {
         Random.InitState(seed); // Set the global random seed
-        Debug.Log("Random seed initialized: " + seed);
+
+        // Set master volume to volume slider's default value
+        AudioListener.volume = 0.5f;
     }
 }
