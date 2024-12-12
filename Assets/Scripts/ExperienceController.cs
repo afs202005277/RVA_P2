@@ -26,11 +26,17 @@ public class ExperienceController : MonoBehaviour
     public Transform leftHand;
     public Transform rightHand;
     public float callBirdTime = 5f;
+    public float waterTriggerTime = 3f;
 
     private bool _holdingLeftHand = false;
     private bool _holdingRightHand = false;
     private float _leftholdingTime = 0f;
     private float _rightholdingTime = 0f;
+
+    private bool _holdingLeftHandWater = false;
+    private bool _holdingRightHandWater = false;
+    private float _leftholdingTimeWater = 0f;
+    private float _rightholdingTimeWater = 0f;
 
     private bool _inExperiment = false;
 
@@ -43,7 +49,9 @@ public class ExperienceController : MonoBehaviour
     public GameObject birdArrivingLeft;
     public GameObject birdArrivingRight;
 
+    public GameObject water;
     public XRSimpleInteractable waterInteractable;
+
 
     public Volume globalVolume;
 
@@ -115,6 +123,52 @@ public class ExperienceController : MonoBehaviour
         {
             _holdingRightHand = false;
             _rightholdingTime = 0f;
+        }
+
+        if (leftHand.position.y < water.transform.position.y)
+        {
+            if (!_holdingLeftHandWater)
+            {
+                _holdingLeftHandWater = true;
+                _leftholdingTimeWater = Time.time;
+            }
+            else
+            {
+                if (Time.time - _leftholdingTimeWater > waterTriggerTime && !_inExperiment)
+                {
+                    Debug.Log("Fish");
+                    RunFishExperiment();
+                    _inExperiment = true;
+                }
+            }
+        }
+        else
+        {
+            _holdingLeftHandWater = false;
+            _leftholdingTimeWater = 0f;
+        }
+
+        // Check if right hand is below the water level
+        if (rightHand.position.y < water.transform.position.y && !_holdingLeftHandWater)
+        {
+            if (!_holdingRightHandWater)
+            {
+                _holdingRightHandWater = true;
+                _rightholdingTimeWater = Time.time;
+            }
+            else
+            {
+                if (Time.time - _rightholdingTimeWater > waterTriggerTime && !_inExperiment)
+                {
+                    RunFishExperiment();
+                    _inExperiment = true;
+                }
+            }
+        }
+        else
+        {
+            _holdingRightHandWater = false;
+            _rightholdingTimeWater = 0f;
         }
 
         if (_inAnyExperiment && _finishExperiment)

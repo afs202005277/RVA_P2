@@ -69,6 +69,10 @@ PrefabInstance:
       value: Tree_branch_prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5974550296282056589, guid: 9a0fbfd3a94d47543b030ed7ba1de465, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974550296282056589, guid: 9a0fbfd3a94d47543b030ed7ba1de465, type: 3}
       propertyPath: m_TagString
       value: Stick
       objectReference: {fileID: 0}
