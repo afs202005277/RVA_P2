@@ -11,11 +11,11 @@ public class DayNightController : MonoBehaviour
 
     [Tooltip("Sun directional light.")]
     public Light sun;
-    public int sunIntensity;
+    public float sunIntensity;
 
     [Tooltip("Moon directional light.")]
     public Light moon;
-    public int moonIntensity;
+    public float moonIntensity;
 
     public GameObject[] firePlaces;
 
@@ -74,6 +74,7 @@ public class DayNightController : MonoBehaviour
 
     void Update()
     {
+
         clock += Time.deltaTime;
         
         float angle = clock * angularSpeed;
