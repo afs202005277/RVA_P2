@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class ExperienceController : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class ExperienceController : MonoBehaviour
 
     private bool _inExperiment = false;
 
+    private bool _inAnyExperiment = false;
+    private GameObject _animalPlayer = null;
+    private GameObject _animalEffect = null;
+    private GameObject _animal = null;
+    private bool _finishExperiment = false;
+
     public GameObject birdArrivingLeft;
     public GameObject birdArrivingRight;
 
@@ -42,9 +49,24 @@ public class ExperienceController : MonoBehaviour
 
     public GameObject portal;
 
+    public InputActionReference finishExperience;
+
+
     private void Start()
     {
         fishPlayer.transform.position = fishSpawn.transform.position;
+        finishExperience.action.started += ButtonWasPressed;
+        finishExperience.action.canceled += ButtonWasReleased;
+    }
+
+    private void ButtonWasPressed(InputAction.CallbackContext context)
+    {
+        _finishExperiment = true;
+    }
+
+    private void ButtonWasReleased(InputAction.CallbackContext context)
+    {
+        _finishExperiment = false;
     }
 
     private void Update()
@@ -94,6 +116,13 @@ public class ExperienceController : MonoBehaviour
             _holdingRightHand = false;
             _rightholdingTime = 0f;
         }
+
+        if (_inAnyExperiment && _finishExperiment)
+        {
+            _inAnyExperiment = false;
+            _animalEffect.SetActive(true);
+            StartCoroutine(EffectTransformationBack(_animalPlayer, _animalEffect, _animal));
+        }
     }
 
     public void RunBirdExperiment()
@@ -113,8 +142,18 @@ public class ExperienceController : MonoBehaviour
         StartCoroutine(EffectTransformation(fishPlayer, fishEffect, null));
     }
 
+    public void RunBeeExperimentMenu()
+    {
+        beePlayer.transform.position = humanPlayer.transform.position;
+        humanEffect.SetActive(true);
+
+        StartCoroutine(EffectTransformation(beePlayer, beeEffect, null));
+    }
+
+
     public void RunBeeExperiment(GameObject bee)
     {
+
         bee.SetActive(false);
         beePlayer.transform.position = bee.transform.position;
 
@@ -123,16 +162,6 @@ public class ExperienceController : MonoBehaviour
         StartCoroutine(EffectTransformation(beePlayer, beeEffect, bee));
     }
 
-    private IEnumerator FinishExperience(float delay, GameObject animalPlayer, GameObject animalEffect, GameObject animal)
-    {
-        yield return new WaitForSeconds(delay);
-        animalEffect.SetActive(true);
-
-
-        StartCoroutine(EffectTransformationBack(animalPlayer, animalEffect, animal));
-
-
-    }
 
     private IEnumerator EffectTransformation(GameObject animalPlayer, GameObject animalEffect, GameObject animal = null)
     {
@@ -142,8 +171,10 @@ public class ExperienceController : MonoBehaviour
         waterInteractable.enabled = false;
         humanPlayer.SetActive(false);
         animalPlayer.SetActive(true);
-
-        StartCoroutine(FinishExperience(experienceTime, animalPlayer, animalEffect, animal));
+        _inAnyExperiment = true;
+        _animalPlayer = animalPlayer;
+        _animalEffect = animalEffect;
+        _animal = animal;
     }
 
     private IEnumerator EffectTransformationBack(GameObject animalPlayer, GameObject animalEffect, GameObject animal = null)
@@ -163,6 +194,9 @@ public class ExperienceController : MonoBehaviour
         _inExperiment = false;
         _holdingLeftHand = false;
         _holdingRightHand = false;
+        _animalPlayer = null;
+        _animalEffect = null;
+        _animal = null;
     }
 
     public void ExitButton()

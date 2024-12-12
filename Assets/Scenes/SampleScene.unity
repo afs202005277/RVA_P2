@@ -2294,6 +2294,7 @@ MonoBehaviour:
   waterInteractable: {fileID: 644127165}
   globalVolume: {fileID: 1302246478}
   portal: {fileID: 1465436044}
+  finishExperience: {fileID: 2411623316343324968, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &383730567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19963,7 +19964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -19975,7 +19976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RunBeeExperiment
+      value: RunBeeExperimentMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -19984,10 +19985,10 @@ PrefabInstance:
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1428074632}
+      objectReference: {fileID: 0}
     - target: {fileID: 8509068967154262022, guid: 0d0d48771fa2647408e664818f93611f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20374,7 +20375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
