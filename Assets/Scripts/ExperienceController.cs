@@ -220,6 +220,8 @@ public class ExperienceController : MonoBehaviour
     public void RunBeeExperimentMenu()
     {
         beePlayer.transform.position = humanPlayer.transform.position;
+        globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+        colorAdjustments.active = true;
         humanEffect.SetActive(true);
 
         StartCoroutine(EffectTransformation(beePlayer, beeEffect, null));
