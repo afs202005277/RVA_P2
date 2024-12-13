@@ -168,7 +168,7 @@ AudioSource:
   m_GameObject: {fileID: 22377192}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8955ef71b3f090d45adb1918c64f99b7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 36264268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 135183000}
   - component: {fileID: 135183002}
   - component: {fileID: 135183001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 143327406}
   - component: {fileID: 143327408}
   - component: {fileID: 143327407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,7 +1010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162297084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Branches
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1174,7 +1174,7 @@ AudioSource:
   m_GameObject: {fileID: 182416621}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8955ef71b3f090d45adb1918c64f99b7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -1622,7 +1622,7 @@ AudioSource:
   m_GameObject: {fileID: 210754353}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: f65f946ad6131674cb9a2a10c5ea326f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -1865,7 +1865,7 @@ GameObject:
   - component: {fileID: 241534213}
   - component: {fileID: 241534215}
   - component: {fileID: 241534214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(100.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2301,6 +2301,7 @@ MonoBehaviour:
   globalVolume: {fileID: 1302246478}
   portal: {fileID: 1465436044}
   finishExperience: {fileID: 2411623316343324968, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  mixer: {fileID: 24100000, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
 --- !u!114 &383730567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2408,7 +2409,7 @@ GameObject:
   - component: {fileID: 409491405}
   - component: {fileID: 409491407}
   - component: {fileID: 409491406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-100.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2794,6 +2795,10 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873022368256633593, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
@@ -2830,9 +2835,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1583990650}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 794835922}
     - targetCorrespondingSourceObject: {fileID: 657184242118504722, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1102382407}
@@ -3944,7 +3946,7 @@ GameObject:
   - component: {fileID: 711256350}
   - component: {fileID: 711256352}
   - component: {fileID: 711256351}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4150,7 +4152,7 @@ GameObject:
   - component: {fileID: 726962400}
   - component: {fileID: 726962402}
   - component: {fileID: 726962401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(100.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4351,21 +4353,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
   m_PrefabInstance: {fileID: 467567760}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &794835922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 794835919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6277b8bd9589e49a1b41e35d18da8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: 0.2
-  offset: 0.2
-  terrain: {fileID: 1362290891}
 --- !u!4 &800027561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 657184243640684915, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
@@ -5032,7 +5019,7 @@ AudioSource:
   m_GameObject: {fileID: 911968475}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 749428170bd956149a4ede7c65dbb8b6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
@@ -5206,7 +5193,7 @@ AudioSource:
   m_GameObject: {fileID: 929584459}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: f65f946ad6131674cb9a2a10c5ea326f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -5720,7 +5707,7 @@ AudioSource:
   m_GameObject: {fileID: 1020739621}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: f65f946ad6131674cb9a2a10c5ea326f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -11544,7 +11531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206642257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16722,7 +16709,7 @@ AudioSource:
   m_GameObject: {fileID: 1330192392}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7f35ba25541794f4d9de8c28ac29997c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -16831,7 +16818,7 @@ GameObject:
   - component: {fileID: 1362290891}
   - component: {fileID: 1362290890}
   - component: {fileID: 1362290893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17226,7 +17213,7 @@ AudioSource:
   m_GameObject: {fileID: 1428074632}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7d4e0fee7e63f9544a94a3bdf7312b17, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
@@ -17691,7 +17678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482749035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FishSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18532,7 +18519,7 @@ AudioSource:
   m_GameObject: {fileID: 1546268967}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8955ef71b3f090d45adb1918c64f99b7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -18814,7 +18801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615815313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19191,7 +19178,7 @@ AudioSource:
   m_GameObject: {fileID: 1719179893}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7aeba1b4ff713a845a54e848d33cabd7, type: 2}
   m_audioClip: {fileID: 8300000, guid: f65f946ad6131674cb9a2a10c5ea326f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
@@ -19289,7 +19276,7 @@ GameObject:
   - component: {fileID: 1732744221}
   - component: {fileID: 1732744223}
   - component: {fileID: 1732744222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-300.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19923,7 +19910,7 @@ GameObject:
   - component: {fileID: 1865590133}
   - component: {fileID: 1865590135}
   - component: {fileID: 1865590134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20336,7 +20323,7 @@ GameObject:
   - component: {fileID: 1894260139}
   - component: {fileID: 1894260141}
   - component: {fileID: 1894260140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(100.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20515,7 +20502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1982550302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20823,7 +20810,7 @@ GameObject:
   - component: {fileID: 2072666993}
   - component: {fileID: 2072666995}
   - component: {fileID: 2072666994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-100.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21053,7 +21040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127320818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bridges
   m_TagString: Untagged
   m_Icon: {fileID: 0}

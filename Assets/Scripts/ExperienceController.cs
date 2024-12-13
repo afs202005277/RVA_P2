@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class ExperienceController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class ExperienceController : MonoBehaviour
     public Transform leftHand;
     public Transform rightHand;
     public float callBirdTime = 5f;
-    public float waterTriggerTime = 3f;
+    public float waterTriggerTime = 5f;
 
     private bool _holdingLeftHand = false;
     private bool _holdingRightHand = false;
@@ -58,6 +59,10 @@ public class ExperienceController : MonoBehaviour
     public GameObject portal;
 
     public InputActionReference finishExperience;
+
+    public AudioMixer mixer;
+
+    private bool _entered;
 
 
     private void Start()
@@ -125,7 +130,7 @@ public class ExperienceController : MonoBehaviour
             _rightholdingTime = 0f;
         }
 
-        if (leftHand.position.y < water.transform.position.y)
+        if (leftHand.position.y < water.transform.position.y && headCamera.position.y > water.transform.position.y)
         {
             if (!_holdingLeftHandWater)
             {
@@ -136,7 +141,6 @@ public class ExperienceController : MonoBehaviour
             {
                 if (Time.time - _leftholdingTimeWater > waterTriggerTime && !_inExperiment)
                 {
-                    Debug.Log("Fish");
                     RunFishExperiment();
                     _inExperiment = true;
                 }
@@ -149,7 +153,7 @@ public class ExperienceController : MonoBehaviour
         }
 
         // Check if right hand is below the water level
-        if (rightHand.position.y < water.transform.position.y && !_holdingLeftHandWater)
+        if (rightHand.position.y < water.transform.position.y && !_holdingLeftHandWater && headCamera.position.y > water.transform.position.y)
         {
             if (!_holdingRightHandWater)
             {
@@ -176,6 +180,23 @@ public class ExperienceController : MonoBehaviour
             _inAnyExperiment = false;
             _animalEffect.SetActive(true);
             StartCoroutine(EffectTransformationBack(_animalPlayer, _animalEffect, _animal));
+        }
+
+        if (headCamera.position.y <= water.transform.position.y)
+        {
+            _entered = true;
+            globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+            colorAdjustments.active = true;
+            mixer.SetFloat("Pitch", 0.35f);
+            mixer.SetFloat("PitchShifter", 0.75f);
+        }
+        else if (_entered)
+        {
+            _entered = false;
+            globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+            colorAdjustments.active = false;
+            mixer.SetFloat("Pitch", 1f);
+            mixer.SetFloat("PitchShifter", 1f);
         }
     }
 
