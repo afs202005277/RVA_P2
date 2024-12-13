@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
     public GameObject instructionsPanel;
     public GameObject loading;
     public GameObject toDisappearDuringInstructions;
+    public GameObject[] slides;
+    private int selectedSlide = 0;
 
     public void ShowInstructions()
     {
@@ -37,5 +39,33 @@ public class MenuManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void SlideLeft()
+    {
+        slides[selectedSlide].SetActive(false);
+        if (selectedSlide == 0)
+        {
+            selectedSlide = slides.Length-1;
+        } else 
+        {
+            selectedSlide--;
+        }
+        slides[selectedSlide].SetActive(true);
+    }
+
+    public void SlideRight()
+    {
+        slides[selectedSlide].SetActive(false);
+        if (selectedSlide == slides.Length - 1)
+        {
+            selectedSlide = 0;
+        }
+        else
+        {
+            selectedSlide++;
+        }
+        slides[selectedSlide].SetActive(true);
+
     }
 }
