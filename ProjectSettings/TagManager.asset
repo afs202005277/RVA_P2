@@ -11,6 +11,7 @@ TagManager:
   - Actors
   - Bridge
   - Fire
+  - House
   layers:
   - Default
   - TransparentFX
