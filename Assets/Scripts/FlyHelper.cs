@@ -14,24 +14,27 @@ public class FlyHelper : MonoBehaviour
     public Terrain terrain;
     private float _lastY = 0f;
 
+    float currGravity;
     // Start is called before the first frame update
     void Start()
     {
         freezeHeightAction.action.started += ctx => ToggleFreezeHeight(true);
         freezeHeightAction.action.canceled += ctx => ToggleFreezeHeight(false);
+        currGravity = gravity;
     }
 
     void ToggleFreezeHeight(bool isFrozen)
     {
         dynamicMoveProvider.enableFly = !isFrozen;
         dynamicMoveProvider.useGravity = !isFrozen;
+        currGravity = isFrozen ? 0f : gravity;
     }
 
     private void FixedUpdate()
     {
         if (Math.Abs(_lastY - transform.position.y) < 0.001f)
         {
-            transform.position = new Vector3(transform.position.x, Math.Max(transform.position.y - gravity * Time.deltaTime, offset + terrain.SampleHeight(new Vector3(transform.position.x, 0f, transform.position.z))), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Math.Max(transform.position.y - currGravity * Time.deltaTime, offset + terrain.SampleHeight(new Vector3(transform.position.x, 0f, transform.position.z))), transform.position.z);
         }
         _lastY = transform.position.y;
     }
