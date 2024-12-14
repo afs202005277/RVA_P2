@@ -781,6 +781,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Freeze Height",
+                    "type": "Button",
+                    "id": "da3d481d-6509-4f0c-9ff3-ad392714db38",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -946,6 +955,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Scale Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0599ca50-2df3-475f-857d-665cb00ee404",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": ";Generic XR Controller",
+                    "action": "Freeze Height",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
