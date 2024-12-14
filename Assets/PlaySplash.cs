@@ -13,7 +13,7 @@ public class PlaySplash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && Time.time > 10f)
+        if (other.tag != "Player" && Time.timeSinceLevelLoad > 10f)
         {
             _audioSource.Play();
         }
