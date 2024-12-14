@@ -86,7 +86,7 @@ public class IKFootSolver : MonoBehaviour
             oldPosition = newPosition;
             oldNormal = newNormal;
         }
-        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
+
     }
 
     private void OnDrawGizmos()
