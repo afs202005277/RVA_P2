@@ -19,7 +19,6 @@ public class MenuManager : MonoBehaviour
 
     public void HideInstructions()
     {
-        Debug.Log("Hide!");
         instructionsPanel.SetActive(false);
         toDisappearDuringInstructions.SetActive(true);
     }
