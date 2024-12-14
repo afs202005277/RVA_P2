@@ -62,6 +62,8 @@ public class ExperienceController : MonoBehaviour
 
     public AudioMixer mixer;
 
+    public float headOffset;
+
     private bool _entered;
 
 
@@ -130,7 +132,7 @@ public class ExperienceController : MonoBehaviour
             _rightholdingTime = 0f;
         }
 
-        if (leftHand.position.y < water.transform.position.y && headCamera.position.y > water.transform.position.y)
+        if (leftHand.position.y < water.transform.position.y && (headCamera.position.y - headOffset) > water.transform.position.y)
         {
             if (!_holdingLeftHandWater)
             {
@@ -153,7 +155,7 @@ public class ExperienceController : MonoBehaviour
         }
 
         // Check if right hand is below the water level
-        if (rightHand.position.y < water.transform.position.y && !_holdingLeftHandWater && headCamera.position.y > water.transform.position.y)
+        if (rightHand.position.y < water.transform.position.y && !_holdingLeftHandWater && (headCamera.position.y - headOffset) > water.transform.position.y)
         {
             if (!_holdingRightHandWater)
             {
@@ -182,11 +184,12 @@ public class ExperienceController : MonoBehaviour
             StartCoroutine(EffectTransformationBack(_animalPlayer, _animalEffect, _animal));
         }
 
-        if (headCamera.position.y <= water.transform.position.y)
+        if (headCamera.position.y - headOffset <= water.transform.position.y)
         {
             _entered = true;
             globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
             colorAdjustments.active = true;
+            RenderSettings.fogDensity = 0.07f;
             mixer.SetFloat("Pitch", 0.35f);
             mixer.SetFloat("PitchShifter", 0.75f);
         }
@@ -195,6 +198,7 @@ public class ExperienceController : MonoBehaviour
             _entered = false;
             globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
             colorAdjustments.active = false;
+            RenderSettings.fogDensity = 0.00f;
             mixer.SetFloat("Pitch", 1f);
             mixer.SetFloat("PitchShifter", 1f);
         }
@@ -214,6 +218,9 @@ public class ExperienceController : MonoBehaviour
         humanEffect.SetActive(true);
         globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
         colorAdjustments.active = true;
+        RenderSettings.fogDensity = 0.07f;
+        mixer.SetFloat("Pitch", 0.35f);
+        mixer.SetFloat("PitchShifter", 0.75f);
         StartCoroutine(EffectTransformation(fishPlayer, fishEffect, null));
     }
 
@@ -258,6 +265,9 @@ public class ExperienceController : MonoBehaviour
         waterInteractable.enabled = true;
         globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
         colorAdjustments.active = false;
+        mixer.SetFloat("Pitch", 1f);
+        mixer.SetFloat("PitchShifter", 1f);
+        RenderSettings.fogDensity = 0.00f;
         animalEffect.SetActive(false);
         birdArrivingLeft.SetActive(false);
         birdArrivingRight.SetActive(false);
@@ -269,6 +279,8 @@ public class ExperienceController : MonoBehaviour
         _inExperiment = false;
         _holdingLeftHand = false;
         _holdingRightHand = false;
+        _holdingLeftHandWater = false;
+        _holdingRightHandWater = false;
         _animalPlayer = null;
         _animalEffect = null;
         _animal = null;
