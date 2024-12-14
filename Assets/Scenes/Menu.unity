@@ -1828,7 +1828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &647087452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2129,7 +2129,7 @@ MonoBehaviour:
 
 
     - Become a bird by placing your hand over the head for 5 seconds
-    or by selecting in the menu.'
+    or by selecting in the hand menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
   m_sharedMaterial: {fileID: -6284218799144481741, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
@@ -2832,7 +2832,7 @@ MonoBehaviour:
   m_text: '
 
 
-    - Become a fish by placing your hand in the water for 3 seconds
+    - Become a fish by placing your hand in the water for 5 seconds
     or by selecting in the menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
@@ -3161,10 +3161,10 @@ MonoBehaviour:
   - {fileID: 1419201950}
   - {fileID: 1855494150}
   - {fileID: 647087451}
+  - {fileID: 1941132834}
   - {fileID: 479702852}
   - {fileID: 1384927671}
   - {fileID: 1391369138}
-  - {fileID: 1941132834}
   - {fileID: 536314528}
 --- !u!1 &1175139969
 GameObject:
@@ -3364,7 +3364,7 @@ MonoBehaviour:
 
 
     - To finish the experience, press one of the red buttons on the
-    map and a portal will appear. Click on it to leave.'
+    map and a portal will appear. Enter the portal to leave.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
   m_sharedMaterial: {fileID: -6284218799144481741, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
@@ -3894,7 +3894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1358351437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4096,8 +4096,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n\n- Use the in-game menu to change sound volume, animal and time of
-    day.\r"
+  m_text: "\n\n- Use the in-game hand menu to change sound's volume, animal and time
+    of day.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
   m_sharedMaterial: {fileID: -6284218799144481741, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
@@ -4263,7 +4263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1419201951
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4387,7 +4387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1608239299
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5520,8 +5520,8 @@ MonoBehaviour:
   m_text: '
 
 
-    - Become a honey bee by selecting it in the menu or by touching
-    a flower.'
+    - Become a honey bee by pressing the Grip button in a flower or
+    by selecting it in the hand menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
   m_sharedMaterial: {fileID: -6284218799144481741, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
