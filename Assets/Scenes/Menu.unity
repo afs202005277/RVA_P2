@@ -3226,7 +3226,8 @@ MonoBehaviour:
   m_text: '
 
 
-    - Collect rocks and sticks to build structures.'
+    - Collect rocks and sticks by reaching them and holding the trigger
+    button to build structures.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
   m_sharedMaterial: {fileID: -6284218799144481741, guid: 1062fe73d131a50469e928bd2c222cf7, type: 2}
@@ -4471,7 +4472,8 @@ MonoBehaviour:
 
 
 
-    - Walk around and explore the terrain.
+    - Walk around (by using the joystick of the left controller or
+    by walking) and explore the terrain.
 
 '
   m_isRightToLeft: 0
