@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
+using Unity.XR.CoreUtils;
 
 public class ExperienceController : MonoBehaviour
 {
@@ -65,6 +66,50 @@ public class ExperienceController : MonoBehaviour
     public float headOffset;
 
     private bool _entered;
+
+    private void turnOffHuman()
+    {
+        for (int i = 0; i < humanPlayer.transform.childCount; i++)
+        {
+            if (humanPlayer.transform.GetChild(i).gameObject.name == "Camera Offset")
+            {
+                GameObject cameraOff = humanPlayer.transform.GetChild(i).gameObject;
+                for (int j = 0; j < cameraOff.transform.childCount; j++)
+                {
+                    if (cameraOff.transform.GetChild(j).gameObject.name != "VR Character IK")
+                    {
+                        cameraOff.transform.GetChild(j).gameObject.SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                humanPlayer.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void turnOnHuman()
+    {
+        for (int i = 0; i < humanPlayer.transform.childCount; i++)
+        {
+            if (humanPlayer.transform.GetChild(i).gameObject.name == "Camera Offset")
+            {
+                GameObject cameraOff = humanPlayer.transform.GetChild(i).gameObject;
+                for (int j = 0; j < cameraOff.transform.childCount; j++)
+                {
+                    if (cameraOff.transform.GetChild(j).gameObject.name != "VR Character IK")
+                    {
+                        cameraOff.transform.GetChild(j).gameObject.SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                humanPlayer.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+    }
 
 
     private void Start()
@@ -251,7 +296,7 @@ public class ExperienceController : MonoBehaviour
 
         humanEffect.SetActive(false);
         waterInteractable.enabled = false;
-        humanPlayer.SetActive(false);
+        turnOffHuman();
         animalPlayer.SetActive(true);
         _inAnyExperiment = true;
         _animalPlayer = animalPlayer;
@@ -273,7 +318,7 @@ public class ExperienceController : MonoBehaviour
         birdArrivingRight.SetActive(false);
 
         animalPlayer.SetActive(false);
-        humanPlayer.SetActive(true);
+        turnOnHuman();
         if (animal != null)
             animal.SetActive(true);
         _inExperiment = false;

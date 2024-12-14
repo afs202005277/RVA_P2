@@ -8728,7 +8728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beePrefab: {fileID: 609701149610677757, guid: 6b87cc6185676184aa2fbceddc33ac14, type: 3}
   beeCount: 10
-  flowersParent: {fileID: 36264267}
+  flowersParent: {fileID: 36264268}
 --- !u!65 &385081485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55878,7 +55878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57639,7 +57639,7 @@ PrefabInstance:
       objectReference: {fileID: 174182354}
     - target: {fileID: 810019319561094050, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_MoveSpeed
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 810019319561094050, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_UseGravity
@@ -57648,6 +57648,10 @@ PrefabInstance:
     - target: {fileID: 1648469353267697591, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820897918385990095, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2218496723442559053, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_RootOrder
