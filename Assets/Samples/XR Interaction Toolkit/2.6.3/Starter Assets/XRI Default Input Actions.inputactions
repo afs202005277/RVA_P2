@@ -781,15 +781,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Freeze Height",
-                    "type": "Button",
-                    "id": "da3d481d-6509-4f0c-9ff3-ad392714db38",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -955,17 +946,6 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Scale Delta",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0599ca50-2df3-475f-857d-665cb00ee404",
-                    "path": "<XRController>{LeftHand}/primaryButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": ";Generic XR Controller",
-                    "action": "Freeze Height",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1606,6 +1586,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Freeze Height",
+                    "type": "Button",
+                    "id": "8bcb7359-efaa-49d6-876f-f67774770d28",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1628,6 +1617,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f7592a3-2479-49b2-bc8e-0237d4369b53",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": ";Generic XR Controller",
+                    "action": "Freeze Height",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
