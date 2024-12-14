@@ -95,6 +95,7 @@ public class DayNightController : MonoBehaviour
         if (currentIsDay)
         {
             moon = TurnOffLight(moon);
+            moon.transform.position = new Vector3(0, -20, 0);
             sun = TurnOnLight(sun, sunIntensity, sunShadows);
         }
         else
