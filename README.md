@@ -44,6 +44,3 @@ This project was built using:
 - Optimize for **standalone execution** on the Meta Quest 3.
 - Expand the interactive **gameplay mechanics**.
 - Introduce **new environments and experiences**.
-
-## License
-This project is licensed under **[MIT License](LICENSE)**. Feel free to modify and distribute it following the terms of the license.
